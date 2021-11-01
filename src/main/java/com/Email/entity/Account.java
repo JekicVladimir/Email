@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
-@Entity //falji ljista poruka, foldera i tako to...
+@Entity
 @Table(name = "account")
 public class Account {
 
@@ -33,10 +33,10 @@ public class Account {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="Message_id")
-    private List<Message> Messages = new ArrayList<>();
+    private List<Message> messages = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="Folder_id")
-    private List<Folder> Folders = new ArrayList<>();
+    private List<Folder> folders = new ArrayList<>();
 
 }

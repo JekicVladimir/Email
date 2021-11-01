@@ -1,15 +1,17 @@
 package com.Email.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
 @Getter @Setter @NoArgsConstructor
+@RequiredArgsConstructor
+@ToString
 public class MyUser {
 
     @Id
@@ -29,22 +31,17 @@ public class MyUser {
     @Column
     private String lastName;
 
-    public MyUser(long id, String username, String password, String firstName, String lastName) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="Account_id")
+    private List<Account> accounts = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "MyUser{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
-    }
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="Tag_id")
+    private List<Tag> tags = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="Contact_id")
+    private List<Contact> contacts = new ArrayList<>();
+
 }
