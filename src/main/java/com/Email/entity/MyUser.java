@@ -1,11 +1,15 @@
 package com.Email.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
+@Getter @Setter @NoArgsConstructor
 public class MyUser {
 
     @Id
@@ -16,7 +20,7 @@ public class MyUser {
     private String username;
 
     @Column
-    @JsonIgnore
+//    @JsonIgnore
     private String password;
 
     @Column
@@ -30,41 +34,6 @@ public class MyUser {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public MyUser() {
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 

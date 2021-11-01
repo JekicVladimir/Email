@@ -22,30 +22,24 @@ public class JwtUserDetailsService implements UserDetailsService {
     @Autowired
     private PasswordEncoder bcryptEncoder;
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if ("javainuse".equals(username)) {
-            return new User("javainuse", "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
-                    new ArrayList<>());
-        } else {
-            throw new UsernameNotFoundException("MyUser not found with username: " + username);
+        MyUser user = userDao.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
         }
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+                new ArrayList<>());
     }
 
-    public MyUser save(UserDTO user) {
-        MyUser newUser = new MyUser();
-        newUser.setUsername(user.getUsername());
-        newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-        newUser.setFirstName("Vladimir");
-        newUser.setLastName("Jekic");
-        return userDao.save(newUser);
-    }
-
-//    public UserDao save(UserDTO user) {
-//        DAOUser newUser = new DAOUser();
+    public MyUser save(MyUser user) {
+//        MyUser newUser = new MyUser();
 //        newUser.setUsername(user.getUsername());
-//        newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-//        return userDao.save(newUser);
-//    }
+        user.setPassword(bcryptEncoder.encode(user.getPassword()));
+//        newUser.setFirstName("Vladimir");
+//        newUser.setLastName("Jekic");
+        return userDao.save(user);
+    }
 
 }
