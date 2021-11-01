@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 @ToString
 public class Photo {
 

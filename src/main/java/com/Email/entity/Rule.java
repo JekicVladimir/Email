@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
 @Entity
 @Table(name = "rule")
 public class Rule {
