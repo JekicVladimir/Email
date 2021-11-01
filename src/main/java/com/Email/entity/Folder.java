@@ -22,10 +22,10 @@ public class Folder {
     private Folder fatherFloder;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="Folder_id")
-    private List<Rule> Rules = new ArrayList<>();
+    @JoinColumn(name="Rule_id")
+    private List<Rule> rules = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="Message_id")
-    private List<Message> Messages = new ArrayList<>();
+    private List<Message> messages = new ArrayList<>();
 }

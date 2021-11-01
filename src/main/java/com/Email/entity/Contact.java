@@ -3,6 +3,8 @@ package com.Email.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tag")
@@ -31,5 +33,9 @@ public class Contact {
 
     @Column
     private String note;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="Photo_id")
+    private List<Photo> photos = new ArrayList<>();
 
 }
