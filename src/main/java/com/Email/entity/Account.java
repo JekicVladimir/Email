@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
-@Entity //falji ljista poruka, foldera i tako to...
+@Entity
 @Table(name = "account")
 public class Account {
 
