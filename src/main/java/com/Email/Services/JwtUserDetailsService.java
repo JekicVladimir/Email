@@ -42,4 +42,15 @@ public class JwtUserDetailsService implements UserDetailsService {
         return userDao.save(user);
     }
 
+    public MyUser update(MyUser user) {
+        MyUser user1 = userDao.findByUsername(user.getUsername());
+        user1.setLastName(user.getLastName());
+        user1.setFirstName(user.getFirstName());
+        //dodaj password i uzmi user name iz tokena da bi mogao i nje ga da menja (getUsernameFromToken)
+        return userDao.save(user1);
+    }
+
+    public MyUser getUser(int id) {
+        return userDao.getById(id);
+    }
 }
