@@ -32,7 +32,7 @@ public class Message {
     private String unread;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="Attachment_id")
+    @JoinColumn(name="Message_id")
     private List<Attachment> attachments = new ArrayList<>();
 
 

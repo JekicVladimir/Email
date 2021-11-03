@@ -36,7 +36,7 @@ public class Account {
     private List<Message> messages = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="Folder_id")
+    @JoinColumn(name="Message_id")
     private List<Folder> folders = new ArrayList<>();
 
 }

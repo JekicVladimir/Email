@@ -17,25 +17,26 @@ public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
 
-    @Column
+    @Column(name="first_name")
     private String firstName;
 
-    @Column
+    @Column(name="last_name")
     private String lastName;
 
-    @Column
+    @Column(name="display_name")
     private String displayName;
 
-    @Column
+    @Column(name="email")
     private String email;
 
-    @Column
+    @Column(name="note")
     private String note;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="Photo_id")
+    @JoinColumn(name="Contact_id")
     private List<Photo> photos = new ArrayList<>();
 
 }
