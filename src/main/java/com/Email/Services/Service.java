@@ -7,8 +7,6 @@ public interface Service<T> {
 
     public List<T> findAll();
 
-    public List<T> findAllWithId(int theId);
-
     public Optional<T> findById(int theId);
 
     public void save(T theEntity);

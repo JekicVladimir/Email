@@ -38,17 +38,17 @@ public class MyUser {
 
 
     //sta sa ovim nije u redu
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="User_id")
-    private List<Account> accounts = new ArrayList<>();
-
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="User_id")
-    private List<Tag> tags = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="User_id")
-    private List<Contact> contacts = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name="User_id")
+//    private List<Account> accounts = new ArrayList<>();
+//
+//
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name="User_id")
+//    private List<Tag> tags = new ArrayList<>();
+//
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name="User_id")
+//    private List<Contact> contacts = new ArrayList<>();
 
 }

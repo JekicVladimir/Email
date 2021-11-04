@@ -2,6 +2,7 @@ package com.Email.Services;
 
 import java.util.ArrayList;
 
+import com.Email.config.JwtTokenUtil;
 import com.Email.dto.UserDTO;
 import com.Email.dao.UserDAO;
 import com.Email.entity.MyUser;
@@ -22,6 +23,9 @@ public class JwtUserDetailsService implements UserDetailsService {
     @Autowired
     private PasswordEncoder bcryptEncoder;
 
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -34,23 +38,21 @@ public class JwtUserDetailsService implements UserDetailsService {
     }
 
     public MyUser save(MyUser user) {
-//        MyUser newUser = new MyUser();
-//        newUser.setUsername(user.getUsername());
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
-//        newUser.setFirstName("Vladimir");
-//        newUser.setLastName("Jekic");
         return userDao.save(user);
     }
 
-    public MyUser update(MyUser user) {
-        MyUser user1 = userDao.findByUsername(user.getUsername());
+    public MyUser update(MyUser user, String token) {//proveriti jos i dodati opcije za promenu pasworda
+        String jwtToken = token.substring(7);
+        String userName =jwtTokenUtil.getUsernameFromToken(jwtToken);
+        MyUser user1 = userDao.findByUsername(userName);
+        user1.setUsername(user.getUsername());
         user1.setLastName(user.getLastName());
         user1.setFirstName(user.getFirstName());
-        //dodaj password i uzmi user name iz tokena da bi mogao i nje ga da menja (getUsernameFromToken)
         return userDao.save(user1);
     }
 
-    public MyUser getUser(int id) {
+    public MyUser getUser(int id) {// ovo u zivotu ne treba
         return userDao.getById(id);
     }
 }
