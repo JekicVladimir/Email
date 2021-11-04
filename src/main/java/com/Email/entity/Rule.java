@@ -11,11 +11,15 @@ public class Rule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
-    @Column
+
+    @Column(name="condition")
     private int condition;
-    @Column
+
+    @Column(name="value")
     private String value;
-    @Column
+
+    @Column(name="operation")
     private int operation;
 }

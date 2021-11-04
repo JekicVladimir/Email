@@ -23,17 +23,17 @@ public class MyUser {
     @Column(name="id")
     private int id;
 
-    @Column
+    @Column(name="userName")
     private String username;
 
-    @Column
+    @Column(name="password")
 //  @JsonIgnore
     private String password;
 
-    @Column
+    @Column(name="first_name")
     private String firstName;
 
-    @Column
+    @Column(name="last_name")
     private String lastName;
 
 

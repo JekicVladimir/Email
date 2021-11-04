@@ -13,22 +13,31 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
-    @Column
+
+    @Column(name="from")
     private String from;
-    @Column
+
+    @Column(name="to")
     private String to;
-    @Column
+
+    @Column(name="cc")
     private String cc;
-    @Column
+
+    @Column(name="bcc")
     private String bcc;
-    @Column
+
+    @Column(name="date_time")
     private Date dateTime;
-    @Column
+
+    @Column(name="subject")
     private String subject;
-    @Column
+
+    @Column(name="content")
     private String content;
-    @Column
+
+    @Column(name="unread")
     private String unread;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

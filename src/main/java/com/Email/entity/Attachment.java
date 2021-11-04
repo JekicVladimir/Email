@@ -15,15 +15,16 @@ import javax.persistence.*;
 public class Attachment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
 
-    @Column
+    @Column(name="path")
     private String path;
 
-    @Column
+    @Column(name="mime_type")
     private String mimeType;
 
-    @Column
+    @Column(name="name")
     private String name;
 
 }
